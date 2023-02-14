@@ -15,11 +15,6 @@ public class Patient {
             ordinationer.add(ordination);
         }
     }
-    public void removeOrdination(Ordination ordination) {
-        if (ordinationer.contains(ordination)) {
-            ordinationer.remove(ordination);
-        }
-    }
 
     public Patient(String cprnr, String navn, double vaegt) {
         this.cprnr = cprnr;
@@ -48,7 +43,11 @@ public class Patient {
     }
 
     //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
-
+    public void removeOrdination(Ordination ordination) {
+        if (ordinationer.contains(ordination)) {
+            ordinationer.remove(ordination);
+        }
+    }
     @Override
     public String toString(){
         return navn + "  " + cprnr;
