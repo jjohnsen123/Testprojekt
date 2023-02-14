@@ -24,7 +24,6 @@ public abstract class Ordination {
 
         }
     }
-
     private void removeLaegemiddel() {
         this.laegemiddel = null;
     }
