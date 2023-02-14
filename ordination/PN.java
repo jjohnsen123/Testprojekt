@@ -31,11 +31,6 @@ public class PN extends Ordination{
     }
 
     public double doegnDosis() {
-        LocalDate startDato;
-        LocalDate slutDato;
-       // long antalDage = DAYS.between(startDato, slutDato) +1;
-
-
 
         return 0.0;
     }
