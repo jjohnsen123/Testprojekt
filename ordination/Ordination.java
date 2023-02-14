@@ -10,8 +10,6 @@ public abstract class Ordination {
 
     private Patient patient;
 
-
-    // TODO Link til Laegemiddel
     private Laegemiddel laegemiddel;
 
     public Laegemiddel getLaegemiddel() {
@@ -28,7 +26,13 @@ public abstract class Ordination {
         this.laegemiddel = null;
     }
 //----------------------------------------------------------------------------------------------------------------------
-    // TODO constructor (med specifikation)
+
+    /**
+     * Initialiserer en ny Ordination med start dato, slut dato og patient
+      * @param startDen start dato
+     * @param slutDen slut dato
+     * @param patient patienten
+     */
     public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
         this.startDen = startDen;
         this.slutDen = slutDen;

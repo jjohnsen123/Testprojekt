@@ -15,6 +15,16 @@ public class DagligFast extends Ordination {
     private LocalTime aften = LocalTime.of(18,0,0);
     private LocalTime nat = LocalTime.of(22,0,0);
 
+    /**
+     * Initaliserer en ny ordination af typen Daglig Fast
+     * @param startDen start dato
+     * @param slutDen slut dato
+     * @param patient patienten
+     * @param morgenAntal antal doser om morgenen
+     * @param middagAntal antal doser om middagen
+     * @param aftenAntal antal doser om aftenen
+     * @param natAntal antal doser om natten
+     */
     public DagligFast(LocalDate startDen, LocalDate slutDen, ordination.Patient patient,
                       double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
         super(startDen, slutDen, patient);
@@ -33,7 +43,10 @@ public class DagligFast extends Ordination {
     }
 
 
-
+    /**
+     * Returnere den samlede dosis
+     * @return samlede dosis
+     */
     @Override
     public double samletDosis() {
         int antalDage = super.antalDage();
@@ -41,12 +54,20 @@ public class DagligFast extends Ordination {
         return samletDosis;
     }
 
+    /**
+     * Returnere den daglige dosis
+     * @return daglige dosis
+     */
     @Override
     public double doegnDosis() {
         double doegnDosis = morgenAntal + middagAntal + aftenAntal + natAntal;
         return doegnDosis;
     }
 
+    /**
+     * Returnere ordinationstypen som en String
+     * @return ordinationstypen
+     */
     @Override
     public String getType() {
         return "Daglig Fast";
