@@ -39,7 +39,11 @@ public class Controller {
 	 */
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 			Patient patient, Laegemiddel laegemiddel, double antal) {
-		// TODO
+		if(patient == null && laegemiddel == null && antal < 0) {
+			throw new NullPointerException("Indtast oplysninger");
+		} if(slutDen.isBefore(startDen)) {
+			throw new IllegalArgumentException("Ordination kan ikke oprettes");
+		}
 		return null;
 	}
 
