@@ -33,20 +33,22 @@ public class DagligFast extends Ordination {
     }
 
 
+
     @Override
     public double samletDosis() {
-        return 0;
+        int antalDage = super.antalDage();
+        double samletDosis = antalDage * doegnDosis();
+        return samletDosis;
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double doegnDosis = morgenAntal + middagAntal + aftenAntal + natAntal;
+        return doegnDosis;
     }
 
     @Override
     public String getType() {
-        return null;
+        return "Daglig Fast";
     }
-
-    // TODO
 }
