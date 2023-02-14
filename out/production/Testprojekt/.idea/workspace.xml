@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="66bfc5ea-2ab6-451b-9344-f76378d1081f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Testprojekt.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Testprojekt/Testprojekt.iml" afterDir="false" />
+    <list default="true" id="66bfc5ea-2ab6-451b-9344-f76378d1081f" name="Changes" comment="PN">
+      <change beforePath="$PROJECT_DIR$/ordination/DagligSkaev.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordination/DagligSkaev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordination/PN.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordination/PN.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
@@ -41,8 +37,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/JohnL/OneDrive/Skrivebord/Datamatiker filer/Programmering/PROGRAMMER/ANDET/openjfx-19.0.2.1-javadoc/javafx-19.0.2.1-javadoc/javafx.base",
-    "project.structure.last.edited": "Global Libraries",
+    "last_opened_file_path": "C:/Users/JohnL/OneDrive/Skrivebord/Datamatiker filer/Programmering/LEKTIONER PROGRAMMER/PRO juni 2015",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15625",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "editor.preferences.completion"
@@ -62,5 +58,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Ordination og Patient Link attributter" />
+    <MESSAGE value="PN extends af Ordination" />
+    <MESSAGE value="PN" />
+    <option name="LAST_COMMIT_MESSAGE" value="PN" />
   </component>
 </project>

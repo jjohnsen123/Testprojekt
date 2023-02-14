@@ -1,13 +1,17 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class PN extends Ordination{
 
     private double antalEnheder;
+    private ArrayList<LocalDate> datoer;
 
-    public PN(LocalDate startDen, LocalDate slutDen, Patient patient) { //Usikker om det her er rigtigt
+    public PN(LocalDate startDen, LocalDate slutDen, Patient patient, int antalEnheder) { //Usikker om det her er rigtigt
         super(startDen, slutDen, patient);
+        this.antalEnheder = antalEnheder;
+        datoer = new ArrayList<>();
     }
 
     /**
@@ -18,8 +22,9 @@ public class PN extends Ordination{
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        // TODO
-        return false;   
+        datoer.add(givesDen);
+
+        return false;
     }
 
     public double doegnDosis() {

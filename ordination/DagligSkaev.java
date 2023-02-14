@@ -12,6 +12,7 @@ public class DagligSkaev extends Ordination {
 
     public DagligSkaev(LocalDate startDen, LocalDate slutDen, ordination.Patient patient) {
         super(startDen, slutDen, patient);
+        //Doser
     }
 
     public void opretDosis(LocalTime tid, double antal) {
@@ -22,17 +23,20 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public double samletDosis() {
-
-        return 0;
+        return antalDage() * doegnDosis();
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double sum = 0.0;
+        for (Dosis dosis : doser){
+            sum += dosis.getAntal();
+        }
+        return sum;
     }
 
     @Override
     public String getType() {
-        return null;
+        return "Dagligs skæv";
     }
 }
