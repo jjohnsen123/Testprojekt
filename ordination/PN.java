@@ -1,7 +1,10 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class PN extends Ordination{
 
@@ -28,7 +31,12 @@ public class PN extends Ordination{
     }
 
     public double doegnDosis() {
-        // TODO
+        LocalDate startDato;
+        LocalDate slutDato;
+       // long antalDage = DAYS.between(startDato, slutDato) +1;
+
+
+
         return 0.0;
     }
 
