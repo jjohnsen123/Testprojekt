@@ -1,6 +1,7 @@
 package ordination;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 public abstract class Ordination {
@@ -9,9 +10,25 @@ public abstract class Ordination {
 
     private Patient patient;
 
+
     // TODO Link til Laegemiddel
+    private Laegemiddel laegemiddel;
 
+    public Laegemiddel getLaegemiddel() {
+        return laegemiddel;
+    }
 
+    public void setLaegemiddel(Laegemiddel laegemiddel) {
+        if (this.laegemiddel != laegemiddel) {
+            this.laegemiddel = laegemiddel;
+
+        }
+    }
+
+    private void removeLaegemiddel() {
+        this.laegemiddel = null;
+    }
+//----------------------------------------------------------------------------------------------------------------------
     // TODO constructor (med specifikation)
     public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
         this.startDen = startDen;
@@ -22,7 +39,7 @@ public abstract class Ordination {
 
     public LocalDate getStartDen() {
         return startDen;
-    }	
+    }
 
     public LocalDate getSlutDen() {
         return slutDen;
@@ -30,6 +47,7 @@ public abstract class Ordination {
 
     /**
      * Antal hele dage mellem startdato og slutdato. Begge dage inklusive.
+     *
      * @return antal dage ordinationen gælder for
      */
     public int antalDage() {
@@ -43,18 +61,21 @@ public abstract class Ordination {
 
     /**
      * Returnerer den totale dosis der er givet i den periode ordinationen er gyldig
+     *
      * @return
      */
     public abstract double samletDosis();
 
     /**
      * Returnerer den gennemsnitlige dosis givet pr dag i den periode ordinationen er gyldig
+     *
      * @return
      */
     public abstract double doegnDosis();
 
     /**
      * Returnerer ordinationstypen som en String
+     *
      * @return
      */
     public abstract String getType();
