@@ -22,34 +22,49 @@ public class PN extends Ordination{
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        datoer.add(givesDen);
-
-        return false;
+        if ((givesDen.isAfter(getStartDen()) || givesDen.isEqual(getStartDen()))
+                && (givesDen.isBefore(getSlutDen()) || givesDen.isEqual(getSlutDen()))) {
+            datoer.add(givesDen);
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    /**
+     * Returnere den daglige dosis
+     * @return daglige dosis
+     */
     public double doegnDosis() {
-        // TODO
-        return 0.0;
+        double doegnDosis = getAntalEnheder() / super.antalDage();
+        return doegnDosis;
     }
 
+    /**
+     * Returnere ordinationstypen som en String
+     * @return ordinationstypen
+     */
     @Override
     public String getType() {
         return "PN";
     }
 
-
+    /**
+     * Returnere den samlede dosis
+     * @return samlede dosis
+     */
     public double samletDosis() {
-        // TODO
-        return 0.0;
+        double samletDosis = getAntalEnheder() * super.antalDage();
+        return samletDosis;
     }
 
     /**
      * Returnerer antal gange ordinationen er anvendt
-     * @return
+     * @return antal gange givet
      */
     public int getAntalGangeGivet() {
-        // TODO
-        return-1;
+        int antalGangeGiver = datoer.size();
+        return antalGangeGiver;
     }
 
     public double getAntalEnheder() {
