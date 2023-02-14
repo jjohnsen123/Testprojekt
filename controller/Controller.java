@@ -2,13 +2,10 @@ package controller;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.IdentityHashMap;
 import java.util.List;
 
-import ordination.DagligFast;
-import ordination.DagligSkaev;
-import ordination.Laegemiddel;
-import ordination.PN;
-import ordination.Patient;
+import ordination.*;
 import storage.Storage;
 
 public class Controller {
@@ -37,12 +34,13 @@ public class Controller {
 	 * Pre: antal >= 0
 	 * @return opretter og returnerer en PN ordination.
 	 */
+
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
-			Patient patient, Laegemiddel laegemiddel, double antal) {
-		if(patient == null && laegemiddel == null && antal < 0) {
+								Patient patient, Laegemiddel laegemiddel, double antal) {
+		if(startDen == null || slutDen == null || patient == null || laegemiddel == null || antal < 0) {
 			throw new NullPointerException("Indtast oplysninger");
-		} if(slutDen.isBefore(startDen)) {
-			throw new IllegalArgumentException("Ordination kan ikke oprettes");
+		} if (slutDen.isBefore(startDen)) {
+			throw new IllegalArgumentException("Indtast korrekt dato");
 		}
 		return null;
 	}
@@ -53,11 +51,16 @@ public class Controller {
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
 	 */
-	public DagligFast opretDagligFastOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-			double morgenAntal, double middagAntal, double aftenAntal,
-			double natAntal) {
-		// TODO
+	public DagligFast opretDagligFastOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+												double morgenAntal, double middagAntal, double aftenAntal,
+												double natAntal) {
+		if(startDen == null || slutDen == null || patient == null || laegemiddel == null ||
+				morgenAntal < 0 || middagAntal < 0 || aftenAntal < 0 || natAntal < 0) {
+			throw new NullPointerException("Indtast oplysninger");
+		} if(slutDen.isBefore(startDen)) {
+			throw new IllegalArgumentException("Indtast korrekt dato");
+		}
+
 		return null;
 	}
 
@@ -70,9 +73,12 @@ public class Controller {
 	 * Pre: alle tal i antalEnheder > 0
 	 */
 	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
-			LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-			LocalTime[] klokkeSlet, double[] antalEnheder) {
-		// TODO
+												  LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
+												  LocalTime[] klokkeSlet, double[] antalEnheder) {
+		if (startDen == null || slutDen == null || patient == null || laegemiddel == null){
+			throw new NullPointerException("Indtast oplysninger");
+		} if(slutDen.isBefore(startDen)) {
+			throw new IllegalArgumentException("Indtast korrekt dato");}
 		return null;
 	}
 
@@ -83,7 +89,7 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-		// TODO
+
 	}
 
 	/**
@@ -93,7 +99,6 @@ public class Controller {
 	 * Pre: patient og lægemiddel er ikke null
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-		//TODO
 		return 0;
 	}
 
@@ -103,7 +108,7 @@ public class Controller {
 	 * Pre: laegemiddel er ikke null
 	 */
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
-			double vægtSlut, Laegemiddel laegemiddel) {
+												   double vægtSlut, Laegemiddel laegemiddel) {
 		// TODO
 		return 0;
 	}
@@ -137,8 +142,8 @@ public class Controller {
 	}
 
 	public Laegemiddel opretLaegemiddel(String navn,
-			double enhedPrKgPrDoegnLet, double enhedPrKgPrDoegnNormal,
-			double enhedPrKgPrDoegnTung, String enhed) {
+										double enhedPrKgPrDoegnLet, double enhedPrKgPrDoegnNormal,
+										double enhedPrKgPrDoegnTung, String enhed) {
 		Laegemiddel lm = new Laegemiddel(navn, enhedPrKgPrDoegnLet,
 				enhedPrKgPrDoegnNormal, enhedPrKgPrDoegnTung, enhed);
 		storage.addLaegemiddel(lm);
