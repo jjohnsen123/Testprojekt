@@ -12,7 +12,6 @@ public class DagligSkaev extends Ordination {
 
     public DagligSkaev(LocalDate startDen, LocalDate slutDen, ordination.Patient patient) {
         super(startDen, slutDen, patient);
-        //Doser
     }
 
     public void opretDosis(LocalTime tid, double antal) {
