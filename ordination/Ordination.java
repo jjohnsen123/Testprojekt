@@ -19,7 +19,6 @@ public abstract class Ordination {
     public void setLaegemiddel(Laegemiddel laegemiddel) {
         if (this.laegemiddel != laegemiddel) {
             this.laegemiddel = laegemiddel;
-
         }
     }
     private void removeLaegemiddel() {
@@ -33,11 +32,12 @@ public abstract class Ordination {
      * @param slutDen slut dato
      * @param patient patienten
      */
-    public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
+    public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel) {
         this.startDen = startDen;
         this.slutDen = slutDen;
         this.patient = patient;
         patient.addOrdination(this);
+        setLaegemiddel(laegemiddel);
     }
 
     public LocalDate getStartDen() {
@@ -82,4 +82,5 @@ public abstract class Ordination {
      * @return
      */
     public abstract String getType();
+
 }

@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class DagligFast extends Ordination {
 
-    private final Dosis[] dosis = new Dosis[4];
+    private final Dosis[] doser = new Dosis[4];
     private double morgenAntal;
     private double middagAntal;
     private double aftenAntal;
@@ -25,20 +25,20 @@ public class DagligFast extends Ordination {
      * @param aftenAntal antal doser om aftenen
      * @param natAntal antal doser om natten
      */
-    public DagligFast(LocalDate startDen, LocalDate slutDen, ordination.Patient patient,
+    public DagligFast(LocalDate startDen, LocalDate slutDen, ordination.Patient patient, ordination.Laegemiddel laegemiddel,
                       double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-        super(startDen, slutDen, patient);
+        super(startDen, slutDen, patient, laegemiddel);
         if (morgenAntal > 0) {
-            dosis[0] = new Dosis(morgen, morgenAntal);
+            doser[0] = new Dosis(morgen, morgenAntal);
         }
         if (middagAntal > 0) {
-            dosis[1] = new Dosis(middag, middagAntal);
+            doser[1] = new Dosis(middag, middagAntal);
         }
          if (aftenAntal > 0) {
-             dosis[2] = new Dosis(aften, aftenAntal);
+             doser[2] = new Dosis(aften, aftenAntal);
          }
          if (natAntal > 0) {
-             dosis[3] = new Dosis(nat, natAntal);
+             doser[3] = new Dosis(nat, natAntal);
          }
     }
 
@@ -71,5 +71,9 @@ public class DagligFast extends Ordination {
     @Override
     public String getType() {
         return "Daglig Fast";
+    }
+
+    public Dosis[] getDoser() {
+        return doser;
     }
 }

@@ -15,7 +15,7 @@ public class Dosis {
     }
 
     public Dosis(LocalTime tid, double antal, DagligSkaev dagligSkaev) {
-        this(tid,antal);
+        this(tid, antal);
         this.dagligSkaev = dagligSkaev;
     }
 
