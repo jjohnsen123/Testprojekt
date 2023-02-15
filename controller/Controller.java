@@ -32,9 +32,13 @@ public class Controller {
 	 * ordinationen oprettes ikke
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: antal >= 0
-	 * @return opretter og returnerer en PN ordination.
+	 * @param startDen start dato
+	 * @param slutDen slut dato
+	 * @param patient patienten
+	 * @param laegemiddel laegemidlet
+	 * @param antal antal
+	 * @return PN ordination.
 	 */
-
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 								Patient patient, Laegemiddel laegemiddel, double antal) {
 		if (startDen == null || slutDen == null || patient == null || laegemiddel == null || antal < 0) {
@@ -52,6 +56,15 @@ public class Controller {
 	 * slutDato kastes en IllegalArgumentException og ordinationen oprettes ikke
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
+	 * @param startDen start dato
+	 * @param slutDen slut dato
+	 * @param patient patienten
+	 * @param laegemiddel laegemidlet
+	 * @param morgenAntal antal morgen
+	 * @param middagAntal antal middag
+	 * @param aftenAntal antal aften
+	 * @param natAntal antal nat
+	 * @return dagligfast ordination
 	 */
 	public DagligFast opretDagligFastOrdination(LocalDate startDen, LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
 												double morgenAntal, double middagAntal, double aftenAntal,
@@ -75,6 +88,13 @@ public class Controller {
 	 *
 	 * Pre: startDen, slutDen, patient og laegemiddel er ikke null
 	 * Pre: alle tal i antalEnheder > 0
+	 * @param startDen start dato
+	 * @param slutDen slut dato
+	 * @param patient patienten
+	 * @param laegemiddel laegemidlet
+	 * @param klokkeSlet klokkesletter
+	 * @param antalEnheder antal enheder
+	 * @return daglig skaev ordination
 	 */
 	public DagligSkaev opretDagligSkaevOrdination(LocalDate startDen,
 												  LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
@@ -97,6 +117,8 @@ public class Controller {
 	 * datoen ikke er indenfor ordinationens gyldighedsperiode kastes en
 	 * IllegalArgumentException
 	 * Pre: ordination og dato er ikke null
+	 * @param ordination ordinationen
+	 * @param dato datoen for anveldelsen af ordinationen
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
 		if (ordination == null || dato == null) {
@@ -113,20 +135,45 @@ public class Controller {
 	 * til patientens vægt). Det er en forskellig enheds faktor der skal
 	 * anvendes, og den er afhængig af patientens vægt.
 	 * Pre: patient og lægemiddel er ikke null
+	 * @param patient patienten
+	 * @param laegemiddel laegemidlet
+	 * @return anbefalede dosis for patienten
 	 */
 	public double anbefaletDosisPrDoegn(Patient patient, Laegemiddel laegemiddel) {
-		return 0;
+		if (patient == null || laegemiddel == null) {
+			throw new NullPointerException("Indtast oplysninger");
+		}
+		if (patient.getVaegt() < 25) {
+			return laegemiddel.getEnhedPrKgPrDoegnLet();
+		} else if (patient.getVaegt() <= 120) {
+			return laegemiddel.getEnhedPrKgPrDoegnNormal();
+		} else if (patient.getVaegt() > 120) {
+			return laegemiddel.getEnhedPrKgPrDoegnTung();
+		}
+		return -1;
 	}
 
 	/**
 	 * For et givent vægtinterval og et givent lægemiddel, hentes antallet af
 	 * ordinationer.
 	 * Pre: laegemiddel er ikke null
+	 * @param vægtStart start vaegt
+	 * @param vægtSlut slut vaegt
+	 * @param laegemiddel laegemidlet
+	 * @return ordinationer pr vaegt pr laegemiddel
 	 */
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
 												   double vægtSlut, Laegemiddel laegemiddel) {
 		if (laegemiddel == null) {
 			throw new NullPointerException("Indtast oplysninger");
+		}
+		int antalOrdinationer;
+		for (Patient p : storage.getAllPatienter()) {
+			if (p.getVaegt() >= vægtStart && p.getVaegt() <= vægtSlut) {
+//				for (laegemiddel : storage.getAllLaegemidler()) {
+//
+//				}
+			}
 		}
 
 		//TODO

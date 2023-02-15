@@ -82,4 +82,5 @@ public abstract class Ordination {
      * @return
      */
     public abstract String getType();
+
 }

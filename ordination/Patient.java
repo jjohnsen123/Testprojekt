@@ -51,4 +51,7 @@ public class Patient {
         return navn + "  " + cprnr;
     }
 
+    public ArrayList<Ordination> getOrdinationer() {
+        return ordinationer;
+    }
 }
