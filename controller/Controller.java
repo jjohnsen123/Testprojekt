@@ -59,7 +59,7 @@ public class Controller {
 		if(startDen == null || slutDen == null || patient == null || laegemiddel == null ||
 				morgenAntal < 0 || middagAntal < 0 || aftenAntal < 0 || natAntal < 0) {
 			throw new NullPointerException("Indtast oplysninger");
-		} if(slutDen.isBefore(startDen)) {
+		} if(!checkStartFoerSlut(startDen, slutDen)) {
 			throw new IllegalArgumentException("Indtast korrekt dato");
 		}
 		DagligFast dagligFast = new DagligFast(startDen, slutDen, patient, laegemiddel,
