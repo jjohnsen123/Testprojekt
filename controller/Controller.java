@@ -156,7 +156,6 @@ public class Controller {
 	/**
 	 * For et givent vægtinterval og et givent lægemiddel, hentes antallet af
 	 * ordinationer.
-	 * Pre: laegemiddel er ikke null
 	 * @param vægtStart start vaegt
 	 * @param vægtSlut slut vaegt
 	 * @param laegemiddel laegemidlet
@@ -164,21 +163,17 @@ public class Controller {
 	 */
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
 												   double vægtSlut, Laegemiddel laegemiddel) {
-		if (laegemiddel == null) {
-			throw new NullPointerException("Indtast oplysninger");
-		}
-		int antalOrdinationer;
-		for (Patient p : storage.getAllPatienter()) {
+		int antalOrdinationer = 0;
+		for (Patient p : getAllPatienter()) {
 			if (p.getVaegt() >= vægtStart && p.getVaegt() <= vægtSlut) {
-//				for (laegemiddel : storage.getAllLaegemidler()) {
-//
-//				}
+				for (Ordination ordination : p.getOrdinationer()) {
+					if (ordination.getLaegemiddel().equals(laegemiddel)) {
+						antalOrdinationer++;
+					}
+				}
 			}
 		}
-
-		//TODO
-
-		return 0;
+		return antalOrdinationer;
 	}
 
 	public List<Patient> getAllPatienter() {

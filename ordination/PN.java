@@ -9,7 +9,7 @@ public class PN extends Ordination{
     private ArrayList<LocalDate> datoer;
 
     public PN(LocalDate startDen, LocalDate slutDen, ordination.Patient patient, ordination.Laegemiddel laegemiddel,
-              double antalEnheder) { //Usikker om det her er rigtigt
+              double antalEnheder) {
         super(startDen, slutDen, patient, laegemiddel);
         this.antalEnheder = antalEnheder;
         datoer = new ArrayList<>();
