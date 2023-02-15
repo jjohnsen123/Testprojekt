@@ -8,11 +8,20 @@ public class DagligSkaev extends Ordination {
 
     private LocalTime tid;
     private double antal;
+    private LocalTime[] klokkeSlet;
+    private double[] antalEnheder;
     private final ArrayList<Dosis> doser = new ArrayList<>();
 
-    public DagligSkaev(LocalDate startDen, LocalDate slutDen, ordination.Patient patient) {
-        super(startDen, slutDen, patient);
-        //Doser
+    public DagligSkaev(LocalDate startDen, LocalDate slutDen, ordination.Patient patient, ordination.Laegemiddel laegemiddel,
+                       LocalTime[] klokkeSlet, double[] antalEnheder) {
+        super(startDen, slutDen, patient, laegemiddel);
+        for (LocalTime tid : klokkeSlet) {
+            this.tid = tid;
+            for (double antal : antalEnheder) {
+                this.antal = antal;
+                opretDosis(tid, antal);
+            }
+        }
     }
 
     public void opretDosis(LocalTime tid, double antal) {

@@ -7,7 +7,6 @@ public class Patient {
     private String navn;
     private double vaegt;
 
-    // TODO: Link til Ordination
     private final ArrayList<Ordination> ordinationer = new ArrayList<>();
 
     public void addOrdination(Ordination ordination) {
@@ -42,7 +41,6 @@ public class Patient {
         this.vaegt = vaegt;
     }
 
-    //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
     public void removeOrdination(Ordination ordination) {
         if (ordinationer.contains(ordination)) {
             ordinationer.remove(ordination);

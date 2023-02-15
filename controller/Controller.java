@@ -37,12 +37,14 @@ public class Controller {
 
 	public PN opretPNOrdination(LocalDate startDen, LocalDate slutDen,
 								Patient patient, Laegemiddel laegemiddel, double antal) {
-		if(startDen == null || slutDen == null || patient == null || laegemiddel == null || antal < 0) {
+		if (startDen == null || slutDen == null || patient == null || laegemiddel == null || antal < 0) {
 			throw new NullPointerException("Indtast oplysninger");
 		} if (slutDen.isBefore(startDen)) {
 			throw new IllegalArgumentException("Indtast korrekt dato");
 		}
-		return null;
+		PN pn = new PN(startDen, slutDen, patient, laegemiddel, antal);
+		patient.addOrdination(pn);
+		return pn;
 	}
 
 	/**
@@ -60,8 +62,10 @@ public class Controller {
 		} if(slutDen.isBefore(startDen)) {
 			throw new IllegalArgumentException("Indtast korrekt dato");
 		}
-
-		return null;
+		DagligFast dagligFast = new DagligFast(startDen, slutDen, patient, laegemiddel,
+				morgenAntal, middagAntal, aftenAntal, natAntal);
+		patient.addOrdination(dagligFast);
+		return dagligFast;
 	}
 
 	/**
@@ -77,9 +81,15 @@ public class Controller {
 												  LocalTime[] klokkeSlet, double[] antalEnheder) {
 		if (startDen == null || slutDen == null || patient == null || laegemiddel == null){
 			throw new NullPointerException("Indtast oplysninger");
-		} if(slutDen.isBefore(startDen)) {
-			throw new IllegalArgumentException("Indtast korrekt dato");}
-		return null;
+		} if (slutDen.isBefore(startDen)) {
+			throw new IllegalArgumentException("Indtast korrekt dato");
+		} if ((klokkeSlet.length != antalEnheder.length)) {
+			throw new IllegalArgumentException("Indtast korrekt data. " +
+					"Antal af klokkeslet skal stemme overens med antal enheder");
+		}
+		DagligSkaev dagligSkaev = new DagligSkaev(startDen, slutDen, patient, laegemiddel, klokkeSlet, antalEnheder);
+		patient.addOrdination(dagligSkaev);
+		return dagligSkaev;
 	}
 
 	/**
@@ -89,7 +99,13 @@ public class Controller {
 	 * Pre: ordination og dato er ikke null
 	 */
 	public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-
+		if (ordination == null || dato == null) {
+			throw new NullPointerException("Indtast oplysninger");
+		}
+		if (dato.isBefore(ordination.getStartDen()) || dato.isAfter(ordination.getSlutDen())) {
+			throw new IllegalArgumentException("Indtast dato som er indenfor ordinationens gyldighedsperiode");
+		}
+		ordination.givDosis(dato);
 	}
 
 	/**
@@ -109,7 +125,12 @@ public class Controller {
 	 */
 	public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
 												   double vægtSlut, Laegemiddel laegemiddel) {
-		// TODO
+		if (laegemiddel == null) {
+			throw new NullPointerException("Indtast oplysninger");
+		}
+
+		//TODO
+
 		return 0;
 	}
 

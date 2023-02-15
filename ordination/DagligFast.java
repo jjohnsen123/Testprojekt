@@ -25,9 +25,9 @@ public class DagligFast extends Ordination {
      * @param aftenAntal antal doser om aftenen
      * @param natAntal antal doser om natten
      */
-    public DagligFast(LocalDate startDen, LocalDate slutDen, ordination.Patient patient,
+    public DagligFast(LocalDate startDen, LocalDate slutDen, ordination.Patient patient, ordination.Laegemiddel laegemiddel,
                       double morgenAntal, double middagAntal, double aftenAntal, double natAntal) {
-        super(startDen, slutDen, patient);
+        super(startDen, slutDen, patient, laegemiddel);
         if (morgenAntal > 0) {
             dosis[0] = new Dosis(morgen, morgenAntal);
         }
