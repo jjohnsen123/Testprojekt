@@ -219,6 +219,12 @@ public class Controller {
 		this.opretPatient("050972-1233", "Hans Jørgensen", 89.4);
 		this.opretPatient("011064-1522", "Ulla Nielsen", 59.9);
 		this.opretPatient("090149-2529", "Ib Hansen", 87.7);
+		this.opretPatient("130790-1800","Jørgen Jørgensen",0);
+		this.opretPatient("150299-8772","Bo Boesen",24.0);
+		this.opretPatient("121256-0512","Janus Janusen",
+		this.opretPatient("120698-1853","John Le",15.5);
+		this.opretPatient("110577-2674","Torben torbensen",158.4);
+		this.opretPatient("150100-2152","Lone lonesen",106.0);
 
 		this.opretLaegemiddel("Acetylsalicylsyre", 0.1, 0.15, 0.16, "Styk");
 		this.opretLaegemiddel("Paracetamol", 1, 1.5, 2, "Ml");
