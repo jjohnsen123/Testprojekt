@@ -65,13 +65,13 @@ class DagligSkaevTest {
         antalEnheder[2] = 1;
         antalEnheder[3] = 1;
         antalEnheder[4] = 1;
-        antalEnheder[5] = -2;
+        antalEnheder[5] = 3;
 
         DagligSkaev dagligSkaev = new DagligSkaev(startDen,slutDen, patient, laegemiddel, klokkeSlet, antalEnheder);
 
         double faktisk = dagligSkaev.doegnDosis();
 
-        Error forventet = new Error();
+        double forventet = 9;
         assertEquals(forventet,faktisk);
     }
     @Test

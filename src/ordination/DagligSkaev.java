@@ -15,6 +15,8 @@ public class DagligSkaev extends Ordination {
     public DagligSkaev(LocalDate startDen, LocalDate slutDen, ordination.Patient patient, ordination.Laegemiddel laegemiddel,
                        LocalTime[] klokkeSlet, double[] antalEnheder) {
         super(startDen, slutDen, patient, laegemiddel);
+        this.klokkeSlet = klokkeSlet;
+        this.antalEnheder = antalEnheder;
         for (LocalTime tid : klokkeSlet) {
             this.tid = tid;
             for (double antal : antalEnheder) {
@@ -38,8 +40,8 @@ public class DagligSkaev extends Ordination {
     @Override
     public double doegnDosis() {
         double sum = 0.0;
-        for (Dosis dosis : doser){
-            sum += dosis.getAntal();
+        for (Double enheder : antalEnheder){
+            sum += enheder;
         }
         return sum;
     }
