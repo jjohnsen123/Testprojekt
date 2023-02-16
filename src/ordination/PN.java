@@ -37,7 +37,7 @@ public class PN extends Ordination{
      * @return daglige dosis
      */
     public double doegnDosis() {
-        double doegnDosis = getAntalEnheder() / super.antalDage();
+        double doegnDosis = (getAntalGangeGivet() * antalEnheder) / antalDage();
         return doegnDosis;
     }
 
@@ -55,7 +55,7 @@ public class PN extends Ordination{
      * @return samlede dosis
      */
     public double samletDosis() {
-        double samletDosis = getAntalEnheder() * super.antalDage();
+        double samletDosis = getAntalGangeGivet() * antalEnheder;
         return samletDosis;
     }
 

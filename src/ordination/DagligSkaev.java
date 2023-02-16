@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class DagligSkaev extends Ordination {
 
-    private LocalTime tid;
-    private double antal;
     private LocalTime[] klokkeSlet;
     private double[] antalEnheder;
     private final ArrayList<Dosis> doser = new ArrayList<>();
@@ -17,14 +15,13 @@ public class DagligSkaev extends Ordination {
         super(startDen, slutDen, patient, laegemiddel);
         this.klokkeSlet = klokkeSlet;
         this.antalEnheder = antalEnheder;
-        for (LocalTime tid : klokkeSlet) {
-            this.tid = tid;
-            for (double antal : antalEnheder) {
-                this.antal = antal;
-                opretDosis(tid, antal);
-            }
+        for (int i = 0; i < antalEnheder.length; i++) {
+            LocalTime tid = klokkeSlet[i];
+            double antal = antalEnheder[i];
+            opretDosis(tid, antal);
         }
-    }
+        }
+
 
     public void opretDosis(LocalTime tid, double antal) {
         Dosis dosis = new Dosis(tid, antal);
@@ -40,8 +37,8 @@ public class DagligSkaev extends Ordination {
     @Override
     public double doegnDosis() {
         double sum = 0.0;
-        for (Double enheder : antalEnheder){
-            sum += enheder;
+        for (Double antal : antalEnheder){
+            sum += antal;
         }
         return sum;
     }

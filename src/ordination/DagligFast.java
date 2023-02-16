@@ -54,8 +54,7 @@ public class DagligFast extends Ordination {
      */
     @Override
     public double samletDosis() {
-        int antalDage = antalDage();
-        double samletDosis = antalDage * doegnDosis();
+        double samletDosis = antalDage() * doegnDosis();
         return samletDosis;
     }
 
