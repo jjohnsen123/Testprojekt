@@ -144,11 +144,11 @@ public class Controller {
 			throw new NullPointerException("Indtast oplysninger");
 		}
 		if (patient.getVaegt() < 25) {
-			return laegemiddel.getEnhedPrKgPrDoegnLet();
+			return laegemiddel.getEnhedPrKgPrDoegnLet() * patient.getVaegt();
 		} else if (patient.getVaegt() <= 120) {
-			return laegemiddel.getEnhedPrKgPrDoegnNormal();
+			return laegemiddel.getEnhedPrKgPrDoegnNormal() * patient.getVaegt();
 		} else if (patient.getVaegt() > 120) {
-			return laegemiddel.getEnhedPrKgPrDoegnTung();
+			return laegemiddel.getEnhedPrKgPrDoegnTung() * patient.getVaegt();
 		}
 		return -1;
 	}
