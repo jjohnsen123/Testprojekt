@@ -16,7 +16,8 @@ class DagligSkaevTest {
         LocalDate startDen = LocalDate.of(2023,2,1);
         LocalDate slutDen = LocalDate.of(2023,2,10);
         ordination.Patient patient = controller.opretPatient("12345678","Hans",70);
-        ordination.Laegemiddel laegemiddel = controller.opretLaegemiddel("Acetylsalicylsyre", 0.1,0.15, 0.16,"styk");
+        ordination.Laegemiddel laegemiddel = controller.opretLaegemiddel("Acetylsalicylsyre",
+                0.1,0.15, 0.16,"styk");
 
         LocalTime[] klokkeSlet = new LocalTime[6];
         klokkeSlet[0] = LocalTime.of(9,30);
